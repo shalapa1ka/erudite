@@ -1,0 +1,6 @@
+.container
+  .row.d-flex.justify-content-center
+    - if !notice.nil?
+      .alert.alert-success.w-50.text-center= notice
+    - if !alert.nil?
+      .alert.alert-danger.w-50.text-center= alert

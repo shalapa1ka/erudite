@@ -1,0 +1,22 @@
+%main.form-signin
+  %h1.h3.mb-3.fw-normal Please sign in
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .form-floating
+      = f.email_field :email, id: 'floatingInput', class: 'mb-2 form-control',
+      placeholder: 'Email address'
+      = f.label 'Email address', for: 'floatingInput'
+
+    .form-floating
+      = f.password_field :password, autocomplete: "current-password", id: 'floatingPassword',
+      class: 'mb-4 form-control', placeholder: :password
+      = f.label :password
+
+    - if devise_mapping.rememberable?
+      .field
+        = f.check_box :remember_me, class: 'checkbox mb-3'
+        = f.label :remember_me
+    .actions.mb-2
+      = f.submit "Sign in", class: 'w-100 btn btn-lg btn-primary'
+  = render "devise/shared/links"
+  %p.mt-5.mb-3.text-muted © 2022
+

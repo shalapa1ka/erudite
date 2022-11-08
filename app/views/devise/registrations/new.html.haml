@@ -1,0 +1,28 @@
+%main.form-signin
+  %h2 Sign up
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+
+    .form-floating
+      = f.text_field :name, id: 'floatingName', class: 'mb-2 form-control', placeholder: :name
+      = f.label :name, for: 'floatingName'
+
+    .form-floating
+      = f.email_field :email, autocomplete: "email", id: 'floatingEmail', class: 'mb-2 form-control', placeholder: :email
+      = f.label :email, for: 'floatingEmail'
+
+    .form-floating
+      = f.password_field :password, autocomplete: "new-password", id: 'floatingPassword', class: 'mb-2 form-control', placeholder: :password
+      = f.label :password, for: 'floatingPassword'
+      - if @minimum_password_length
+        %em
+          (#{@minimum_password_length} characters minimum)
+
+    .form-floating
+      = f.password_field :password_confirmation, autocomplete: "new-password", id: 'floatingPassword2', class: 'mt-2 mb-2 form-control', placeholder: :password_confirmation
+      = f.label :password_confirmation, for: 'floatingPassword2'
+
+    .actions
+      = f.submit "Sign up", class: 'w-100 btn btn-lg btn-primary'
+  = render "devise/shared/links"
+
